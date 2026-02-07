@@ -1,0 +1,23 @@
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+
+# dbt profiles & secrets
+profiles.yml
+.env
+
+# Snowflake / key-pair auth
+*.p8
+*.pem
+*.key
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python cache
+__pycache__/
+*.pyc

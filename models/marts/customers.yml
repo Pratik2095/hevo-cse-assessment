@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: customers
+    description: "Customer mart with first/most recent order dates, order count, and lifetime value."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique

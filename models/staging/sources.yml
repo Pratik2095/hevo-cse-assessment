@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: hevo_pg
+    database: PC_HEVODATA_DB
+    schema: PUBLIC
+    tables:
+      - name: PG_RAW_CUSTOMERS
+      - name: PG_RAW_ORDERS                
+        columns:
+          - name: ORDER_ID
+            tests:
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+      - name: PG_RAW_PAYMENTS  
