@@ -77,3 +77,56 @@ Demonstrated understanding of CDC via Logical Replication
 Handled schema mismatches between documentation and actual data
 Avoided fabricating data and documented assumptions transparently
 Built analytics models with correct grain and testing
+
+🔧 How to Run the Project
+Prerequisites
+
+Access to Snowflake
+dbt installed locally with the Snowflake adapter
+Hevo pipeline already configured and running (PostgreSQL → Snowflake via Logical Replication)
+
+⚠️ Note: Data ingestion is handled by Hevo. This project focuses on transformations and modeling using dbt.
+
+Step 1: Configure dbt Profile
+Ensure your profiles.yml is correctly configured for Snowflake with:
+Account
+User
+Role
+Warehouse
+Database: PC_HEVODATA_DB
+Schema: ANALYTICS
+Authentication can be password-based or key-pair based (as supported by Snowflake).
+
+Step 2: Verify dbt Connection
+From the dbt project root directory:
+dbt debug
+This confirms:
+Snowflake connectivity
+Credentials and permissions
+Profile configuration
+
+Step 3: Run dbt Models
+Execute all staging and mart models:
+dbt run
+
+This will:
+Read raw tables created by Hevo in PC_HEVODATA_DB.PUBLIC
+Create transformed models in PC_HEVODATA_DB.ANALYTICS
+Materialize the customers table
+
+Step 4: Run dbt Tests
+Run data quality tests:
+dbt test
+
+This executes:
+Source tests (not-null checks on raw tables)
+Model tests (not-null and uniqueness checks on customers.customer_id)
+Output
+After successful execution, the following objects will be available in Snowflake:
+Staging Views
+ANALYTICS.STG_CUSTOMERS
+ANALYTICS.STG_ORDERS
+ANALYTICS.STG_PAYMENTS
+
+Mart Table
+ANALYTICS.CUSTOMERS
