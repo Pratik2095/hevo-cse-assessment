@@ -58,7 +58,6 @@ The raw_payments dataset does not contain an amount column.
 Therefore, customer_lifetime_value is calculated using the amount field from orders, which is the only available monetary value in the dataset.
 
 This assumption is explicitly documented and no synthetic data was introduced.
-```bash
 dbt Tests
 
 The project includes both source-level and model-level tests.
@@ -100,8 +99,8 @@ Authentication can be password-based or key-pair based (as supported by Snowflak
 
 ### Step 2: Verify dbt Connection
 From the dbt project root directory
-```bash
-dbt debug
+### dbt debug
+
 This confirms
 1. Snowflake connectivity
 2. Credentials and permissions
@@ -109,8 +108,7 @@ This confirms
 
 ### Step 3: Run dbt Models
 Execute all staging and mart models
-```bash
-dbt run
+### dbt run
 
 This will
 1. Read raw tables created by Hevo in PC_HEVODATA_DB.PUBLIC
@@ -119,8 +117,7 @@ This will
 
 ### Step 4: Run dbt Tests
 Run data quality tests
-```bash
-dbt test
+### dbt test
 
 This executes
 1. Source tests (not-null checks on raw tables)
