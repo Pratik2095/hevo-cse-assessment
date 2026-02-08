@@ -9,12 +9,12 @@ The objective was to ingest data from a self-hosted PostgreSQL database using Lo
 
 Source → Ingestion → Warehouse → Transformations
 PostgreSQL (Docker, Logical Replication)
-        ↓
-      Hevo
-        ↓
-   Snowflake (PC_HEVODATA_DB)
-        ↓
-      dbt
+↓
+Hevo
+↓
+Snowflake (PC_HEVODATA_DB)
+↓
+dbt
 
 ## Source Data
 
