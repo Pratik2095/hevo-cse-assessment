@@ -43,14 +43,15 @@ Since Logical Replication captures only changes after pipeline creation, only ne
 
 ### Mart Model – customers
 
-### Column	              ### Description
-customer_id	        Unique customer identifier
-first_name	        Derived from customer name
-last_name	        Derived from customer name
-first_order	        Earliest order date
-most_recent_order	Latest order date
-number_of_orders	Count of customer orders
-customer_lifetime_value	Total monetary value
+|  Column	         |       Description
+|------------------------|----------------------------|
+| customer_id	         | Unique customer identifier |
+| first_name	         | Derived from customer name |
+| last_name	         | Derived from customer name |
+| first_order	         | Earliest order date        |
+| most_recent_order      | Latest order date          |
+| number_of_orders       | Count of customer orders   |
+| customer_lifetime_value| Total monetary value       |
 
 ## Assumption 
 The raw_payments dataset does not contain an amount column.
@@ -88,7 +89,7 @@ All tests pass successfully.
 ⚠️ Note: Data ingestion is handled by Hevo. This project focuses on transformations and modeling using dbt.
 
 ### Step 1: Configure dbt Profile
-Ensure your profiles.yml is correctly configured for Snowflake with:
+Ensure your profiles.yml is correctly configured for Snowflake with
 - Account
 - User
 - Role
@@ -98,29 +99,29 @@ Ensure your profiles.yml is correctly configured for Snowflake with:
 Authentication can be password-based or key-pair based (as supported by Snowflake).
 
 ### Step 2: Verify dbt Connection
-From the dbt project root directory:
-dbt debug
-This confirms:
-Snowflake connectivity
-Credentials and permissions
-Profile configuration
+From the dbt project root directory
+### dbt debug
+This confirms
+1. Snowflake connectivity
+2. Credentials and permissions
+3. Profile configuration
 
 ### Step 3: Run dbt Models
-Execute all staging and mart models:
-dbt run
+Execute all staging and mart models
+### dbt run
 
-This will:
-Read raw tables created by Hevo in PC_HEVODATA_DB.PUBLIC
-Create transformed models in PC_HEVODATA_DB.ANALYTICS
-Materialize the customers table
+This will
+1. Read raw tables created by Hevo in PC_HEVODATA_DB.PUBLIC
+2. Create transformed models in PC_HEVODATA_DB.ANALYTICS
+3. Materialize the customers table
 
 ### Step 4: Run dbt Tests
-Run data quality tests:
-dbt test
+Run data quality tests
+### dbt test
 
-This executes:
-Source tests (not-null checks on raw tables)
-Model tests (not-null and uniqueness checks on customers.customer_id)
+This executes
+1. Source tests (not-null checks on raw tables)
+2. Model tests (not-null and uniqueness checks on customers.customer_id)
 
 ## Output
 After successful execution, the following objects will be available in Snowflake:
