@@ -9,7 +9,7 @@ The objective was to ingest data from a self-hosted PostgreSQL database using Lo
 
 ### Source → Ingestion → Warehouse → Transformations
 
-PostgreSQL (Docker, Logical Replication)
+PostgreSQL (Docker,Logical Replication)
 ↓
 Hevo
 ↓
